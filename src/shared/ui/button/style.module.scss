@@ -1,0 +1,14 @@
+.fill {
+  background: $c-secondary;
+  color: $c-primary;
+  padding: 18px 62px;
+  font-size: $fs-md;
+  border-radius: $br-full;
+  font-weight: bold;
+  transition-duration: $td-main;
+
+  &:hover {
+    transition-duration: $td-main;
+    opacity: 0.9;
+  }
+}

@@ -1,1 +1,6 @@
-@use "./variables.scss" as *;
+html,
+body {
+  background: $c-primary;
+  color: $c-f-primary;
+  font-family: $main-font;
+}
