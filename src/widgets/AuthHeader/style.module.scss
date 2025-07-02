@@ -1,0 +1,15 @@
+.header {
+  padding: $m-6 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: $m-6;
+}
