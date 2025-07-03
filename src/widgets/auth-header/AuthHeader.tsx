@@ -5,7 +5,7 @@ import { Button, Container } from "@/shared/ui";
 import classes from "./style.module.scss";
 
 interface HeaderProps {
-  type: "register" | "login" | "logout" | "empty";
+  type: string;
 }
 
 const AuthHeader = ({ type }: HeaderProps) => {
@@ -15,10 +15,18 @@ const AuthHeader = ({ type }: HeaderProps) => {
         <Link to={"https://livedune.com/ru"}>
           <img src="/logo/logo.svg" alt="Live dune logo" />
         </Link>
-        <div className={classes.nav}>
-          <p>Уже есть аккаунт?</p>
-          <Button link="/reg">Войти</Button>
-        </div>
+        {type === "login" && (
+          <div className={classes.nav}>
+            <p>У вас нет аккаунта?</p>
+            <Button link="/auth/register">Регистрация</Button>
+          </div>
+        )}
+        {type === "register" && (
+          <div className={classes.nav}>
+            <p>Уже есть аккаунт?</p>
+            <Button link="/auth/login">Войти</Button>
+          </div>
+        )}
       </Container>
     </header>
   );
