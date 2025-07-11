@@ -35,7 +35,7 @@ const RegisterForm = () => {
           У меня есть промокод
         </Button>
       ) : (
-        <Input placeholder="Промокод" />
+        <Input registration={register("promo")} placeholder="Промокод" type="text" fullWidth />
       )}
 
       <Button variant="fill" type="submit" className={classes.btn}>
