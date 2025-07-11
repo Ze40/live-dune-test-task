@@ -59,12 +59,8 @@ select,
 button {
   font: inherit;
   color: inherit;
-}
-
-/* Убираем аутлайн у интерактивных элементов при фокусе */
-:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 2px;
+  border: none;
+  outline: none;
 }
 
 /* Сброс таблиц */
