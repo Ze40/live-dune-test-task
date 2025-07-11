@@ -1,0 +1,28 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.letter {
+  margin-bottom: $m-12;
+  width: 100px;
+  height: 100px;
+}
+
+.inf {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: $m-10;
+}
+
+.title {
+  font-size: $fs-3xl;
+  font-weight: 600;
+}
+
+.btn {
+  width: 100%;
+  font-size: $fs-lg;
+}
