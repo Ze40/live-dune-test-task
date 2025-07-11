@@ -22,6 +22,9 @@
   flex-direction: column;
   gap: $m-8;
   margin-bottom: $m-6;
+  @media (max-width: 420px) {
+    width: 100%;
+  }
 }
 
 .btn {
@@ -31,4 +34,10 @@
   align-items: center;
   justify-content: center;
   gap: $m-4;
+
+  @media (max-width: 760px) {
+    font-size: $fs-md;
+    font-weight: 600;
+    padding: $m-5 0;
+  }
 }
