@@ -8,6 +8,11 @@
   transition-duration: $td-main;
   text-align: center;
 
+  @media (max-width: 760px) {
+    font-size: $fs-sm;
+    padding: 12px 24px;
+  }
+
   &:hover {
     transition-duration: $td-main;
     opacity: 0.9;
