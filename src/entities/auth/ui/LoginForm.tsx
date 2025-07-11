@@ -13,9 +13,27 @@ const LoginForm = () => {
     formState: { errors },
   } = useForm<LoginSchemaType>({ resolver: zodResolver(LoginSchema) });
   return (
-    <form className={classes.form}>
-      <Input registration={register("email")} placeholder="Email" fullWidth />
-      <Input registration={register("password")} placeholder="Пароль" fullWidth />
+    <form className={classes.form} onSubmit={handleSubmit((data) => console.log(data))}>
+      <div>
+        <Input
+          registration={register("email")}
+          placeholder="Email"
+          fullWidth
+          type="email"
+          error={!!errors.email}
+        />
+        {errors.email && <p className={classes.error}>{errors.email.message}</p>}
+      </div>
+      <div>
+        <Input
+          registration={register("password")}
+          placeholder="Пароль"
+          fullWidth
+          type="password"
+          error={!!errors.password}
+        />
+        {errors.password && <p className={classes.error}>{errors.password.message}</p>}
+      </div>
       <Button className={classes.btn} type="submit" variant="fill">
         Войти в аккаунт
       </Button>
