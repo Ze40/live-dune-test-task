@@ -37,9 +37,14 @@ const DidntGetEmailPage = () => {
         </div>
         <Button disabled={isSubmitSuccessful} variant="fill" type="submit" className={classes.btn}>
           {isSubmitSuccessful ? (
-            "Письмо отправленно"
+            "Отправленно"
+          ) : isSubmitting ? (
+            <>
+              <LoadingCircle />
+              Отправка
+            </>
           ) : (
-            <>{isSubmitting && <LoadingCircle />}Отправить</>
+            "Отправить"
           )}
         </Button>
       </form>

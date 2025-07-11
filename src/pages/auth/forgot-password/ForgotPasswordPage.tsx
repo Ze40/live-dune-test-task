@@ -13,7 +13,7 @@ import classes from "./style.module.scss";
 const ForgotPasswordPage = () => {
   const {
     register,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isSubmitSuccessful },
     handleSubmit,
   } = useForm<ForgotPasswordSchemaType>({ resolver: zodResolver(ForgotPasswordSchema) });
 
@@ -37,9 +37,17 @@ const ForgotPasswordPage = () => {
           <Input registration={register("email")} type="text" placeholder="Email" fullWidth />
           {errors.email && <p className="error-text">{errors.email.message}</p>}
         </div>
-        <Button variant="fill" type="submit" className={classes.btn}>
-          {isSubmitting && <LoadingCircle />}
-          Отправить
+        <Button disabled={isSubmitSuccessful} variant="fill" type="submit" className={classes.btn}>
+          {isSubmitSuccessful ? (
+            "Отправленно"
+          ) : isSubmitting ? (
+            <>
+              <LoadingCircle />
+              Отправка
+            </>
+          ) : (
+            "Отправить"
+          )}
         </Button>
         <Button variant="ghost" link="/auth/login">
           Отменить
