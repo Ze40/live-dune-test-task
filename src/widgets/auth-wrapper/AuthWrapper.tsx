@@ -31,7 +31,7 @@ export const AuthWrapper = ({ children, type }: AuthWrapperProps) => {
         </div>
       </div>
       <p className={"small-sub-text text-center"}>или</p>
-      {children}
+      <div className={classes.child}>{children}</div>
     </div>
   );
 };
