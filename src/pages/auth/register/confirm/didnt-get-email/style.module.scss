@@ -1,0 +1,34 @@
+.container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subtitle {
+  max-width: 670px;
+  margin: $m-4 0 $m-8;
+
+  & > span {
+    color: $c-secondary;
+    font-weight: bold;
+  }
+}
+
+.form {
+  width: 420px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: $m-8;
+  margin-bottom: $m-6;
+}
+
+.btn {
+  width: 100%;
+  font-size: $fs-lg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $m-4;
+}
