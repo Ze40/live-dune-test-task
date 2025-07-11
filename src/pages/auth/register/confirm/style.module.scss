@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.subtitle {
+  max-width: 560px;
+  margin: $m-4 0 $m-10;
+}
+
+.btn {
+  width: 354px;
+  font-size: $fs-lg;
+  margin-bottom: $m-6;
+}
