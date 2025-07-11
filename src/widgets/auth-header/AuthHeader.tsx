@@ -14,7 +14,7 @@ const AuthHeader = ({ type }: HeaderProps) => {
   return (
     <header className={classes.header}>
       <Container className={classes.container}>
-        <Link to={"https://livedune.com/ru"}>
+        <Link to={"https://livedune.com/ru"} className={classes.logo}>
           <img src="/logo/logo.svg" alt="Live dune logo" />
         </Link>
         {type === "login" && (

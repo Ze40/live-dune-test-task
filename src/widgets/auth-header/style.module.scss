@@ -11,6 +11,18 @@
   align-items: center;
 
   height: 100px;
+
+  @media (max-width: 760px) {
+    height: 60px;
+  }
+}
+
+.logo {
+  width: 142px;
+
+  @media (max-width: 760px) {
+    width: 112px;
+  }
 }
 
 .nav {
