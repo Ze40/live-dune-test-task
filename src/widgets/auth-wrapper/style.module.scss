@@ -1,0 +1,24 @@
+.wrapper {
+  position: relative;
+  width: 496px;
+}
+
+.content {
+  text-align: center;
+}
+
+.title {
+  margin-bottom: $m-4;
+}
+
+.oauths {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: $m-8 0 $m-2;
+  gap: $m-4;
+}
+
+.oauth {
+  width: 50%;
+}
