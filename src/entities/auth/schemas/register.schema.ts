@@ -11,6 +11,7 @@ export const RegisterSchema = z.object({
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]+$/,
       "Пароль должен содержать: 1 заглавную букву, 1 цифру и 1 спецсимвол"
     ),
+  promo: z.string().optional(),
 });
 
 export type RegisterSchemaType = z.infer<typeof RegisterSchema>;
