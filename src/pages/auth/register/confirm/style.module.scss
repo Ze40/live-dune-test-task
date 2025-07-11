@@ -14,4 +14,10 @@
   width: 354px;
   font-size: $fs-lg;
   margin-bottom: $m-6;
+
+  @media (max-width: 760px) {
+    font-size: $fs-md;
+    font-weight: 600;
+    padding: $m-5 0;
+  }
 }
