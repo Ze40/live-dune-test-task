@@ -1,0 +1,26 @@
+.btn {
+  display: flex;
+  align-items: center;
+  gap: $m-4;
+  padding: $m-4;
+  outline: $b-gray;
+  border-radius: $r-3;
+
+  &:hover,
+  &:focus-visible,
+  &:focus {
+    outline: none;
+    background-color: rgba($color: $c-secondary, $alpha: 0.05);
+    transition-duration: $td-main;
+  }
+
+  & > img {
+    width: 24px;
+    height: 24px;
+  }
+
+  & > p {
+    font-size: $fs-md;
+    font-weight: 600;
+  }
+}
