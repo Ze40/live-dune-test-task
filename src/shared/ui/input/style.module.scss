@@ -3,6 +3,8 @@
   outline: $b-gray;
   border-radius: $r-3;
   transition-duration: $td-main;
+  font-size: $fs-md;
+  font-weight: 500;
 
   &:hover {
     transition-duration: $td-main;
