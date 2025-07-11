@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ButtonHTMLAttributes, ReactNode } from "react";
 
 import clsx from "clsx";
 import { NavLink } from "react-router";
@@ -7,7 +7,7 @@ import { revealClasses } from "@/utils/common";
 
 import classes from "./style.module.scss";
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   link?: string;
   children: ReactNode;
@@ -15,7 +15,14 @@ interface ButtonProps {
   type?: "button" | "submit";
 }
 
-const Button = ({ className, link, children, variant = "fill", type = "button" }: ButtonProps) => {
+const Button = ({
+  className,
+  link,
+  children,
+  variant = "fill",
+  type = "button",
+  ...props
+}: ButtonProps) => {
   const [commonClasses, activeClass] = revealClasses(className, "active");
   if (link) {
     return (
@@ -31,7 +38,7 @@ const Button = ({ className, link, children, variant = "fill", type = "button" }
   }
 
   return (
-    <button type={type} className={clsx(classes[variant], commonClasses)}>
+    <button type={type} className={clsx(classes[variant], commonClasses)} {...props}>
       {children}
     </button>
   );
