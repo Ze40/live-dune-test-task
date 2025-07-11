@@ -11,7 +11,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   link?: string;
   children: ReactNode;
-  variant?: "fill" | "empty";
+  variant?: "fill" | "empty" | "ghost";
   type?: "button" | "submit";
 }
 

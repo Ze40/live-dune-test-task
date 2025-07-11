@@ -28,3 +28,13 @@
     text-decoration: underline;
   }
 }
+
+.ghost {
+  font-size: $fs-md;
+  color: $c-f-primary;
+  opacity: 0.4;
+  font-weight: bold;
+  background: none;
+  text-align: center;
+  line-height: 1.7;
+}
