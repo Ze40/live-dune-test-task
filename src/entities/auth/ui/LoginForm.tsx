@@ -22,7 +22,7 @@ const LoginForm = () => {
           type="email"
           error={!!errors.email}
         />
-        {errors.email && <p className={classes.error}>{errors.email.message}</p>}
+        {errors.email && <p className="error-text">{errors.email.message}</p>}
       </div>
       <div>
         <Input
@@ -32,7 +32,7 @@ const LoginForm = () => {
           type="password"
           error={!!errors.password}
         />
-        {errors.password && <p className={classes.error}>{errors.password.message}</p>}
+        {errors.password && <p className="error-text">{errors.password.message}</p>}
       </div>
       <Button className={classes.btn} type="submit" variant="fill">
         Войти в аккаунт

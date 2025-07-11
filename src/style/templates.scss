@@ -12,3 +12,10 @@
 .text-center {
   text-align: center;
 }
+
+.error-text {
+  color: $c-red;
+  font-size: $fs-sm;
+  margin-top: $m-2;
+  text-align: center;
+}

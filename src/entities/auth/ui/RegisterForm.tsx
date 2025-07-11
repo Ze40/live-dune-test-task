@@ -20,15 +20,15 @@ const RegisterForm = () => {
     <form className={classes.form} onSubmit={handleSubmit((data) => console.log(data))}>
       <div>
         <Input registration={register("name")} placeholder="Имя" type="text" fullWidth />
-        {errors.name && <p className={classes.error}>{errors.name.message}</p>}
+        {errors.name && <p className="error-text">{errors.name.message}</p>}
       </div>
       <div>
         <Input registration={register("email")} placeholder="Email" type="email" fullWidth />
-        {errors.email && <p className={classes.error}>{errors.email.message}</p>}
+        {errors.email && <p className="error-text">{errors.email.message}</p>}
       </div>
       <div>
         <Input registration={register("password")} placeholder="Пароль" type="password" fullWidth />
-        {errors.password && <p className={classes.error}>{errors.password.message}</p>}
+        {errors.password && <p className="error-text">{errors.password.message}</p>}
       </div>
       {!hasPromo ? (
         <Button onClick={() => setHasPromo(!hasPromo)} variant="empty" className={classes.promo}>
