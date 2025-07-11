@@ -4,6 +4,8 @@ import { Outlet, useLocation } from "react-router";
 
 import { AuthHeader } from "@/widgets";
 
+import classes from "./style.module.scss";
+
 export const AuthLayout = () => {
   const location = useLocation();
   const [type, setType] = useState<string>("");
@@ -16,7 +18,9 @@ export const AuthLayout = () => {
   return (
     <>
       <AuthHeader type={type} />
-      <Outlet />
+      <main className={classes.main}>
+        <Outlet />
+      </main>
     </>
   );
 };
