@@ -1,6 +1,10 @@
 .wrapper {
   position: relative;
   width: 496px;
+
+  @media (max-width: 760px) {
+    width: 343px;
+  }
 }
 
 .content {
@@ -9,6 +13,9 @@
 
 .title {
   margin-bottom: $m-4;
+  @media (max-width: 760px) {
+    margin-bottom: $m-2;
+  }
 }
 
 .oauths {
@@ -17,10 +24,22 @@
   width: 100%;
   margin: $m-8 0 $m-2;
   gap: $m-4;
+
+  @media (max-width: 760px) {
+    margin: $m-3 0 $m-2;
+    flex-direction: column;
+    gap: $m-2;
+    align-items: start;
+  }
 }
 
 .oauth {
   width: 50%;
+
+  @media (max-width: 760px) {
+    width: 100%;
+    align-items: center;
+  }
 }
 
 .child {
