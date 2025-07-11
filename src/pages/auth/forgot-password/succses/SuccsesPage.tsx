@@ -15,7 +15,7 @@ const SuccsesPage = () => {
             письмо для смены пароля
           </p>
         </div>
-        <Button variant="fill" link="/auth/login">
+        <Button variant="fill" link="/auth/login" className={classes.btn}>
           Вернуться на главную
         </Button>
       </div>
