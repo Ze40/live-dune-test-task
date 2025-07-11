@@ -1,0 +1,26 @@
+.input {
+  padding: $m-4 $m-5;
+  outline: $b-gray;
+  border-radius: $r-3;
+  transition-duration: $td-main;
+
+  &:hover {
+    transition-duration: $td-main;
+    transform: scale(1.02);
+  }
+
+  &:focus,
+  &:focus-visible {
+    transition-duration: $td-main;
+    outline-color: $c-secondary;
+  }
+
+  &.error {
+    transition-duration: $td-main;
+    outline-color: $c-red;
+  }
+
+  &.fullWidth {
+    width: 100%;
+  }
+}
