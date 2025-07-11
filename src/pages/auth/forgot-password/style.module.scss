@@ -21,6 +21,10 @@
 .title {
   font-size: $fs-3xl;
   font-weight: 600;
+
+  @media (max-width: 760px) {
+    font-size: $fs-2xl;
+  }
 }
 
 .btn {
@@ -30,4 +34,10 @@
   align-items: center;
   justify-content: center;
   gap: $m-4;
+
+  @media (max-width: 760px) {
+    font-size: $fs-md;
+    font-weight: 600;
+    padding: $m-5 0;
+  }
 }

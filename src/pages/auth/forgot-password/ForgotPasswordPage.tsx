@@ -46,7 +46,7 @@ const ForgotPasswordPage = () => {
               Отправка
             </>
           ) : (
-            "Отправить"
+            "Восстановить пароль"
           )}
         </Button>
         <Button variant="ghost" link="/auth/login">

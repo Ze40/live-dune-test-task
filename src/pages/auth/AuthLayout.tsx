@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import { Outlet, useLocation } from "react-router";
 
+import { Container } from "@/shared/ui";
 import { AuthHeader } from "@/widgets";
 
 import classes from "./style.module.scss";
@@ -28,7 +29,9 @@ export const AuthLayout = () => {
     <>
       <AuthHeader type={type} />
       <main className={classes.main}>
-        <Outlet />
+        <Container>
+          <Outlet />
+        </Container>
       </main>
     </>
   );
