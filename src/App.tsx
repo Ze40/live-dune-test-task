@@ -5,6 +5,8 @@ import ForgotPasswordPage from "./pages/auth/forgot-password/ForgotPasswordPage"
 import SuccsesPage from "./pages/auth/forgot-password/succses/SuccsesPage";
 import LoginPage from "./pages/auth/login/LoginPage";
 import RegisterPage from "./pages/auth/register/RegisterPage";
+import ConfirmEmailPage from "./pages/auth/register/confirm/ConfirmEmailPage";
+import DidntGetEmailPage from "./pages/auth/register/confirm/didnt-get-email/DidntGetEmailPage";
 
 function App() {
   return (
@@ -14,7 +16,13 @@ function App() {
         <Route path="auth" element={<AuthLayout />}>
           <Route index element={<Navigate to="login" replace />} />
           <Route path="login" element={<LoginPage />} />
-          <Route path="register" element={<RegisterPage />} />
+          <Route path="register">
+            <Route index element={<RegisterPage />} />
+            <Route path="confirm">
+              <Route index element={<ConfirmEmailPage />} />
+              <Route path="didnt-get-email" element={<DidntGetEmailPage />} />
+            </Route>
+          </Route>
           <Route path="forgot-password">
             <Route index element={<ForgotPasswordPage />} />
             <Route path="succses" element={<SuccsesPage />} />

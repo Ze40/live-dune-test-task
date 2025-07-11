@@ -11,8 +11,17 @@ export const AuthLayout = () => {
   const [type, setType] = useState<string>("");
 
   useEffect(() => {
-    const newType = location.pathname.split("/").at(-1) || "empty";
-    setType(newType);
+    const urls = location.pathname.split("/");
+    const lastUr = urls.at(-1);
+    if (lastUr === "register") {
+      setType("register");
+    } else if (lastUr === "login") {
+      setType("login");
+    } else if (lastUr === "confirm" || lastUr === "didnt-get-email") {
+      setType("confirm");
+    } else {
+      setType("empty");
+    }
   }, [location]);
 
   return (

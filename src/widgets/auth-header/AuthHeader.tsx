@@ -27,6 +27,11 @@ const AuthHeader = ({ type }: HeaderProps) => {
             <Button link="/auth/login">Войти</Button>
           </div>
         )}
+        {type === "confirm" && (
+          <Button link="/auth/register" variant="ghost">
+            Выйти
+          </Button>
+        )}
       </Container>
     </header>
   );
