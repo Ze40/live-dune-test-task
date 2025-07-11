@@ -1,7 +1,7 @@
 .btn {
   display: flex;
   align-items: center;
-  gap: $m-4;
+
   padding: $m-4;
   outline: $b-gray;
   border-radius: $r-3;
@@ -22,5 +22,6 @@
   & > p {
     font-size: $fs-md;
     font-weight: 600;
+    width: 100%;
   }
 }
