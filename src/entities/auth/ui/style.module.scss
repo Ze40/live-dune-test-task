@@ -8,6 +8,11 @@
 
 .btn {
   font-size: $fs-lg;
+
+  @media (max-width: 760px) {
+    font-size: $fs-md;
+    padding: $m-5 0;
+  }
 }
 
 .ofert {
