@@ -1,7 +1,10 @@
+import { useDispatch } from "react-redux";
 import { Link } from "react-router";
 
 import { Button, Container } from "@/shared/ui";
 import { useScreenSize } from "@/utils/hooks";
+import type { AppDispatch } from "@/utils/store";
+import { logoutUser } from "@/utils/store/slices/usersSlice";
 
 import classes from "./style.module.scss";
 
@@ -10,7 +13,13 @@ interface HeaderProps {
 }
 
 const AuthHeader = ({ type }: HeaderProps) => {
+  const dispatch = useDispatch<AppDispatch>();
   const { width } = useScreenSize();
+
+  const handleClick = () => {
+    dispatch(logoutUser());
+  };
+
   return (
     <header className={classes.header}>
       <Container className={classes.container}>
@@ -30,7 +39,7 @@ const AuthHeader = ({ type }: HeaderProps) => {
           </div>
         )}
         {type === "confirm" && (
-          <Button link="/auth/register" variant="ghost">
+          <Button link="/auth/register" variant="ghost" onClick={handleClick}>
             Выйти
           </Button>
         )}

@@ -35,6 +35,9 @@ const usersSlice = createSlice({
       state.isSuccess = false;
       state.error = undefined;
     },
+    logoutUser: (state) => {
+      state.currentUser = null;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -73,4 +76,4 @@ const usersSlice = createSlice({
 });
 
 export default usersSlice.reducer;
-export const { resetSuccessState } = usersSlice.actions;
+export const { resetSuccessState, logoutUser } = usersSlice.actions;
