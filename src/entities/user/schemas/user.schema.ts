@@ -2,12 +2,9 @@ import z from "zod";
 
 import { passwordRegex } from "@/utils/regex";
 
-export const RegisterSchema = z.object({
+export const UserSchema = z.object({
   name: z.string().min(2, "Имя обязательно"),
-  email: z
-    .string()
-    .min(1, "Почта обязательна")
-    .email("Возможно вы ошиблись в указании почтового сервиса"),
+  email: z.string().min(1, "Почта обязательна").email("Некоректная почта"),
   password: z
     .string()
     .min(1, "Пароль обязателен")
@@ -17,4 +14,4 @@ export const RegisterSchema = z.object({
   promo: z.string().optional(),
 });
 
-export type RegisterSchemaType = z.infer<typeof RegisterSchema>;
+export type UserSchemaType = z.infer<typeof UserSchema>;

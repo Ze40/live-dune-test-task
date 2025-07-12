@@ -1,19 +1,34 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
-import { Button, Input } from "@/shared/ui";
+import { Button, Input, LoadingCircle } from "@/shared/ui";
+import type { AppDispatch, RootState } from "@/utils/store";
+import { loginUser } from "@/utils/store/slices/thunks";
 
 import { LoginSchema, type LoginSchemaType } from "../schemas/login.schema";
 import classes from "./style.module.scss";
 
 const LoginForm = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const { currentUser, error } = useSelector((state: RootState) => state.users);
+
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<LoginSchemaType>({ resolver: zodResolver(LoginSchema) });
+
+  const onSumbit = async (data: LoginSchemaType) => {
+    await dispatch(loginUser(data));
+    if (currentUser) {
+      window.location.href = "https://livedune.com/ru";
+    }
+  };
+
   return (
-    <form className={classes.form} onSubmit={handleSubmit((data) => console.log(data))}>
+    <form className={classes.form} onSubmit={handleSubmit(onSumbit)}>
       <div>
         <Input
           registration={register("email")}
@@ -34,7 +49,9 @@ const LoginForm = () => {
         />
         {errors.password && <p className="error-text">{errors.password.message}</p>}
       </div>
+      {error && <p className="error-text">{error}</p>}
       <Button className={classes.btn} type="submit" variant="fill">
+        {isSubmitting && <LoadingCircle />}
         Войти в аккаунт
       </Button>
       <Button variant="empty" link="/auth/forgot-password">

@@ -8,6 +8,10 @@
 
 .btn {
   font-size: $fs-lg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $m-4;
 
   @media (max-width: 760px) {
     font-size: $fs-md;
