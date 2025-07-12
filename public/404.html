@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting</title>
+    <script>
+      sessionStorage.redirect = window.location.pathname + window.location.search;
+      window.location.replace("/live-dune-test-task/");
+    </script>
+  </head>
+  <body>
+    Перенаправление на домашнюю страницу
+    <script>
+      (function () {
+        const redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== window.location.pathname) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
+  </body>
+</html>

@@ -1,5 +1,5 @@
 import { Provider } from "react-redux";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router";
+import { HashRouter, Navigate, Route, Routes } from "react-router";
 
 import { AuthLayout } from "./pages/auth/AuthLayout";
 import ForgotPasswordPage from "./pages/auth/forgot-password/ForgotPasswordPage";
@@ -13,7 +13,7 @@ import { store } from "./utils/store";
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter basename="/live-dune-test-task">
+      <HashRouter>
         <Routes>
           <Route index element={<Navigate to={"auth"} replace />} />
           <Route path="auth" element={<AuthLayout />}>
@@ -32,7 +32,7 @@ function App() {
             </Route>
           </Route>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </Provider>
   );
 }
