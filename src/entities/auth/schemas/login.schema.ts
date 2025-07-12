@@ -12,7 +12,7 @@ export const LoginSchema = z.object({
     .min(1, "Пароль обязателен")
     .min(8, "Длина пароля должна быть больше 8 символов")
     .max(16, "Длина пароля должна быть меньше 16 символов")
-    .regex(passwordRegex, "Пароль должен содержать: 1 заглавную букву, 1 цифру и 1 спецсимвол"),
+    .regex(passwordRegex, "Пароль должен содержать буквы и цифры"),
 });
 
 export type LoginSchemaType = z.infer<typeof LoginSchema>;
