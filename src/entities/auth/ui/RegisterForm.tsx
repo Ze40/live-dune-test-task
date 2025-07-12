@@ -2,8 +2,12 @@ import { useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
-import { Button, Input } from "@/shared/ui";
+import { Button, Input, LoadingCircle } from "@/shared/ui";
+import type { AppDispatch, RootState } from "@/utils/store";
+import { registerUser } from "@/utils/store/slices/thunks";
 
 import { RegisterSchema, type RegisterSchemaType } from "../schemas/register.schema";
 import classes from "./style.module.scss";
@@ -13,11 +17,19 @@ const RegisterForm = () => {
 
   const {
     register,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     handleSubmit,
   } = useForm<RegisterSchemaType>({ resolver: zodResolver(RegisterSchema) });
+
+  const dispatch = useDispatch<AppDispatch>();
+  const { error } = useSelector((state: RootState) => state.users);
+
+  const onSubmit = async (data: RegisterSchemaType) => {
+    await dispatch(registerUser(data));
+  };
+
   return (
-    <form className={classes.form} onSubmit={handleSubmit((data) => console.log(data))}>
+    <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
       <div>
         <Input registration={register("name")} placeholder="Имя" type="text" fullWidth />
         {errors.name && <p className="error-text">{errors.name.message}</p>}
@@ -37,8 +49,9 @@ const RegisterForm = () => {
       ) : (
         <Input registration={register("promo")} placeholder="Промокод" type="text" fullWidth />
       )}
-
+      {error && <p className="error-text">{error}</p>}
       <Button variant="fill" type="submit" className={classes.btn}>
+        {isSubmitting && <LoadingCircle />}
         Создать аккаунт
       </Button>
       <p className={classes.ofert}>
