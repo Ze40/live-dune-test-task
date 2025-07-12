@@ -9,7 +9,7 @@ interface OAuthGoogleProps {
 const OAuthGoogle = ({ className }: OAuthGoogleProps) => {
   return (
     <button type="button" className={clsx(className, classes.btn)}>
-      <img src="/service/google-logo.svg" alt="google logo" />
+      <img src={`${import.meta.env.BASE_URL}/service/google-logo.svg`} alt="google logo" />
       <p>Войти через Google</p>
     </button>
   );

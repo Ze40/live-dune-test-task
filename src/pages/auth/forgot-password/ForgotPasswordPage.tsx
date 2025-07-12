@@ -27,7 +27,11 @@ const ForgotPasswordPage = () => {
 
   return (
     <div className={classes.page}>
-      <img src="/service/lock.png" alt="lock image" className={classes.lock} />
+      <img
+        src={`${import.meta.env.BASE_URL}/service/lock.png`}
+        alt="lock image"
+        className={classes.lock}
+      />
       <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
         <div className="text-center">
           <h2 className={classes.title}>Восстановить пароль</h2>

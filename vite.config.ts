@@ -12,4 +12,6 @@ export default defineConfig({
       },
     },
   },
+  base: "/live-dune-test-task",
+  publicDir: "public",
 });

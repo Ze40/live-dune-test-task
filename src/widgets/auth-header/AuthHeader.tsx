@@ -24,7 +24,7 @@ const AuthHeader = ({ type }: HeaderProps) => {
     <header className={classes.header}>
       <Container className={classes.container}>
         <Link to={"https://livedune.com/ru"} className={classes.logo}>
-          <img src="/logo/logo.svg" alt="Live dune logo" />
+          <img src={`${import.meta.env.BASE_URL}/logo/logo.svg`} alt="Live dune logo" />
         </Link>
         {type === "login" && (
           <div className={classes.nav}>

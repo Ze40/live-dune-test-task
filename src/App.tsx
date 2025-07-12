@@ -13,7 +13,7 @@ import { store } from "./utils/store";
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename="/live-dune-test-task">
         <Routes>
           <Route index element={<Navigate to={"auth"} replace />} />
           <Route path="auth" element={<AuthLayout />}>
