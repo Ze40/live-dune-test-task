@@ -8,18 +8,19 @@ import { useSelector } from "react-redux";
 import { Button, Input, LoadingCircle } from "@/shared/ui";
 import type { AppDispatch, RootState } from "@/utils/store";
 import { loginUser } from "@/utils/store/slices/thunks";
+import { resetSuccessState } from "@/utils/store/slices/usersSlice";
 
 import { LoginSchema, type LoginSchemaType } from "../schemas/login.schema";
 import classes from "./style.module.scss";
 
 const LoginForm = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { currentUser, error } = useSelector((state: RootState) => state.users);
+  const { isSuccess, isLoading, error } = useSelector((state: RootState) => state.users);
 
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<LoginSchemaType>({ resolver: zodResolver(LoginSchema) });
 
   const onSumbit = async (data: LoginSchemaType) => {
@@ -27,10 +28,15 @@ const LoginForm = () => {
   };
 
   useEffect(() => {
-    if (currentUser) {
+    if (isSuccess) {
       window.location.href = "https://livedune.com/ru";
+      dispatch(resetSuccessState());
     }
-  }, [currentUser]);
+  }, [isSuccess, dispatch]);
+
+  useEffect(() => {
+    resetSuccessState();
+  }, [dispatch]);
 
   return (
     <form className={classes.form} onSubmit={handleSubmit(onSumbit)}>
@@ -56,7 +62,7 @@ const LoginForm = () => {
       </div>
       {error && <p className="error-text">{error}</p>}
       <Button className={classes.btn} type="submit" variant="fill">
-        {isSubmitting && <LoadingCircle />}
+        {isLoading && <LoadingCircle />}
         Войти в аккаунт
       </Button>
       <Button variant="empty" link="/auth/forgot-password">

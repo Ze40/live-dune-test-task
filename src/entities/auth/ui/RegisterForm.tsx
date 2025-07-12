@@ -1,32 +1,49 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 
 import { Button, Input, LoadingCircle } from "@/shared/ui";
 import type { AppDispatch, RootState } from "@/utils/store";
 import { registerUser } from "@/utils/store/slices/thunks";
+import { resetSuccessState } from "@/utils/store/slices/usersSlice";
 
 import { RegisterSchema, type RegisterSchemaType } from "../schemas/register.schema";
 import classes from "./style.module.scss";
 
 const RegisterForm = () => {
+  const navigate = useNavigate();
+
   const [hasPromo, setHasPromo] = useState<boolean>(false);
 
   const {
     register,
-    formState: { errors, isSubmitting },
+    formState: { errors },
     handleSubmit,
   } = useForm<RegisterSchemaType>({ resolver: zodResolver(RegisterSchema) });
 
   const dispatch = useDispatch<AppDispatch>();
-  const { error } = useSelector((state: RootState) => state.users);
+  const { error, isSuccess, isLoading } = useSelector((state: RootState) => state.users);
 
   const onSubmit = async (data: RegisterSchemaType) => {
     await dispatch(registerUser(data));
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      navigate("confirm");
+      dispatch(resetSuccessState());
+    }
+  }, [isSuccess, navigate, dispatch]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetSuccessState());
+    };
+  }, [dispatch]);
 
   return (
     <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
@@ -51,7 +68,7 @@ const RegisterForm = () => {
       )}
       {error && <p className="error-text">{error}</p>}
       <Button variant="fill" type="submit" className={classes.btn}>
-        {isSubmitting && <LoadingCircle />}
+        {isLoading && <LoadingCircle />}
         Создать аккаунт
       </Button>
       <p className={classes.ofert}>
