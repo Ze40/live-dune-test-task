@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -22,10 +24,13 @@ const LoginForm = () => {
 
   const onSumbit = async (data: LoginSchemaType) => {
     await dispatch(loginUser(data));
+  };
+
+  useEffect(() => {
     if (currentUser) {
       window.location.href = "https://livedune.com/ru";
     }
-  };
+  }, [currentUser]);
 
   return (
     <form className={classes.form} onSubmit={handleSubmit(onSumbit)}>
