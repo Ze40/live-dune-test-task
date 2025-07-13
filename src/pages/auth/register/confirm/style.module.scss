@@ -20,5 +20,10 @@
     font-size: $fs-md;
     font-weight: 600;
     padding: $m-5 0;
+    width: 343px;
+  }
+
+  @media (max-width: 370px) {
+    width: 280px;
   }
 }

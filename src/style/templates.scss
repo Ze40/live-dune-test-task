@@ -6,6 +6,10 @@
   @media (max-width: 760px) {
     font-size: $fs-4xl;
   }
+
+  @media (max-width: 370px) {
+    font-size: $fs-3xl;
+  }
 }
 
 .small-sub-text {
