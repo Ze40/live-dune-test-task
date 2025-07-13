@@ -35,7 +35,9 @@ const LoginForm = () => {
   }, [isSuccess, dispatch]);
 
   useEffect(() => {
-    resetSuccessState();
+    return () => {
+      dispatch(resetSuccessState());
+    };
   }, [dispatch]);
 
   return (
