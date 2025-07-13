@@ -8,5 +8,16 @@ export const store = configureStore({
   },
 });
 
+store.subscribe(() => {
+  const state = store.getState();
+  localStorage.setItem(
+    "reduxState",
+    JSON.stringify({
+      users: state.users.users,
+      currentUser: state.users.currentUser,
+    })
+  );
+});
+
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

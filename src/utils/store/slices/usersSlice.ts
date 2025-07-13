@@ -12,20 +12,24 @@ export interface UsersState {
   isSuccess: boolean;
 }
 
-const initialState: UsersState = {
-  users: [
-    {
-      name: "Игорь",
-      email: "example@example.com",
-      password: "password2021",
-      promo: undefined,
-    },
-  ],
-  currentUser: null,
-  error: undefined,
-  isLoading: false,
-  isSuccess: false,
-};
+const savedState = localStorage.getItem("reduxState");
+
+const initialState: UsersState = savedState
+  ? { ...JSON.parse(savedState), error: undefined, isLoading: false, isSuccess: false }
+  : {
+      users: [
+        {
+          name: "Игорь",
+          email: "example@example.com",
+          password: "password2021",
+          promo: undefined,
+        },
+      ],
+      currentUser: null,
+      error: undefined,
+      isLoading: false,
+      isSuccess: false,
+    };
 
 const usersSlice = createSlice({
   name: "users",
